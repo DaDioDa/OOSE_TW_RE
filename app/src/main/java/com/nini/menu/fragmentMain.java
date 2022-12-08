@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import Core.Singleton.Controller;
+
 public class fragmentMain extends Fragment implements View.OnClickListener {
 
     Button BtnArr[] = new Button[15];
+    Controller ctrl = Controller.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +37,7 @@ public class fragmentMain extends Fragment implements View.OnClickListener {
         switch(v.getId())
         {
             case R.id.butt_0:
-
+                ctrl.MainBtnClick(0);
                 break;
             case R.id.butt_1:
 
