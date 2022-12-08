@@ -50,7 +50,7 @@
             app:layout_constraintGuide_percent="0.75"/>
     <!--第一行-->
     <Button
-            android:id="@+id/aaa"
+            android:id="@+id/dess_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -59,6 +59,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver1"/>
     <Button
+            android:id="@+id/dess_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -68,6 +69,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver2"/>
     <Button
+            android:id="@+id/dess_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -77,6 +79,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver3"/>
     <Button
+            android:id="@+id/dess_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -88,6 +91,7 @@
 
     <!--第二行-->
     <Button
+            android:id="@+id/dess_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -97,6 +101,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor2"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver1"/>
     <Button
+            android:id="@+id/dess_5"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -106,6 +111,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor2"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver2"/>
     <Button
+            android:id="@+id/dess_6"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -115,6 +121,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor2"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver3"/>
     <Button
+            android:id="@+id/dess_7"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -126,6 +133,7 @@
 
     <!--第三行-->
     <Button
+            android:id="@+id/dess_8"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -135,6 +143,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor3"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver1"/>
     <Button
+            android:id="@+id/dess_9"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -144,6 +153,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor3"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver2"/>
     <Button
+            android:id="@+id/dess_10"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -153,6 +163,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor3"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver3"/>
     <Button
+            android:id="@+id/dess_11"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"

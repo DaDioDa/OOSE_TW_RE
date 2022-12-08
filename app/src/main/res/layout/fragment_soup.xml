@@ -43,6 +43,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.75"/>
     <Button
+            android:id="@+id/soup_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -52,6 +53,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver1"/>
     <Button
+            android:id="@+id/soup_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -61,6 +63,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver2"/>
     <Button
+            android:id="@+id/soup_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
@@ -70,6 +73,7 @@
             app:layout_constraintTop_toTopOf="@id/guide_hor1"
             app:layout_constraintLeft_toLeftOf="@id/guide_ver3"/>
     <Button
+            android:id="@+id/soup_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintHeight_percent="0.22"
