@@ -2,6 +2,8 @@ package com.nini.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
@@ -16,11 +18,18 @@ public class Menu extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.menu);
 
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+                MYSQL con = new MYSQL();
+                con.run();
+                final String data = con.getData();
+                Log.v("OK",data);
+            }
+        }).start();
+
         tabs = findViewById(R.id.meal);
         pager = findViewById(R.id.pager);
-
-
-
 
         pagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
