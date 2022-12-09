@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MYSQL {
+public class DBM {
 
     // 資料庫定義
     String mysql_ip = "85.10.205.173";
@@ -37,18 +37,19 @@ public class MYSQL {
         }
     }
 
-    public String getData() {
+    public String getData(String s) {
         String data = "";
         try {
             Connection con = DriverManager.getConnection(url, db_user, db_password);
-            String sql = "SELECT * FROM dessert";
+            String sql = s;
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                String idDessert = rs.getString("idDessert");
                 String Name = rs.getString("Name");
-                data += idDessert + ", " + Name + "\n";
+                String price = rs.getString("price");
+
+                data += "==甜點== "+Name + ", " + price + "\n";
             }
             st.close();
         } catch (SQLException e) {
@@ -56,4 +57,5 @@ public class MYSQL {
         }
         return data;
     }
+
 }
