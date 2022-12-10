@@ -7,35 +7,38 @@ import android.util.Log;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
+import java.text.ParseException;
+
+import Core.Strategy.Timer;
+
 public class Menu extends AppCompatActivity {
     TabLayout tabs;
     ViewPager pager;
     ViewPagerAdapter pagerAdapter;
 
+    public static final DBM con = new DBM();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.menu);
-
-        final DBM con = new DBM();
-
+//==================CtrlStart=====================
+        final Timer t = new Timer();
         new Thread(new Runnable(){
-            String sql;
-            String data;
-            public void run(){
-                con.run();
-                sql ="SELECT * FROM dessert where lunch = 1";
-                data = con.getData(sql);
-                Log.v("=======午餐=======",data);
-
-                sql ="SELECT * FROM dessert where dinner = 1";
-                data = con.getData(sql);
-                Log.v("=======晚餐=======",data);
+            public void run()
+            {
+                try
+                {
+                    t.check();
+                }
+                catch (ParseException e)
+                {
+                    e.printStackTrace();
+                }
             }
         }).start();
 
-
+//==================CtrlEnd=====================
 
         tabs = findViewById(R.id.meal);
         pager = findViewById(R.id.pager);
