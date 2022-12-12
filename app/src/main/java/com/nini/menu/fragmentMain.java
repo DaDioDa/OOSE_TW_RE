@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import java.util.ArrayList;
+
+import Core.Composite.Menu;
 import Core.Singleton.Controller;
 
 public class fragmentMain extends Fragment implements View.OnClickListener {
@@ -21,16 +24,15 @@ public class fragmentMain extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-
         for (int i = 0; i < 15; i++) {
             int id = getResources().getIdentifier("butt_"+ i, "id","com.nini.menu");
             BtnArr[i] = rootView.findViewById(id);
             BtnArr[i].setText("This is Button NO." + (i+1));
             BtnArr[i].setOnClickListener(this);
         }
-
         return rootView;
     }
+
 
     @Override
     public void onClick(View v) {

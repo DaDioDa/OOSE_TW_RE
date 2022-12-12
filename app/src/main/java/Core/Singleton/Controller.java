@@ -1,6 +1,10 @@
 package Core.Singleton;
 
 import com.nini.menu.Menu;
+import com.nini.menu.fragmentDessert;
+import com.nini.menu.fragmentDrinks;
+import com.nini.menu.fragmentMain;
+import com.nini.menu.fragmentSoup;
 
 import java.text.ParseException;
 
@@ -9,7 +13,8 @@ import Core.Strategy.Timer;
 public class Controller {
 
     private static Controller instance = new Controller();
-    Menu menu;
+    public Core.Composite.Menu menu;
+    public boolean DB_OK = false;
 
     private Controller(){}
     public static Controller getInstance()
@@ -37,12 +42,16 @@ public class Controller {
         final Timer t = new Timer();
         try
         {
-            //change 這邊改成retrun menu
+            //change 這邊改成 retrun menu
             t.check();
         }
         catch (ParseException e)
         {
             e.printStackTrace();
         }
+    }
+
+    public boolean isGetDataDone() {
+        return DB_OK;
     }
 }

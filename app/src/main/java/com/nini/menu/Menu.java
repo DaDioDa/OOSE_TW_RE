@@ -17,7 +17,7 @@ public class Menu extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter pagerAdapter;
     Controller ctrl;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.menu);
 //==================CtrlStart===================
         ctrl = Controller.getInstance();
-        ctrl.getMenuFromDB();
+        //ctrl.getMenuFromDB();
 //==================CtrlEnd=====================
 
         tabs = findViewById(R.id.meal);

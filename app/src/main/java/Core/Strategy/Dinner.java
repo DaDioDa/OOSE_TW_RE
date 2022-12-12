@@ -9,6 +9,7 @@ import com.nini.menu.DBM;
 import java.util.ArrayList;
 
 import Core.Composite.Menu;
+import Core.Singleton.Controller;
 
 public class Dinner implements TimeStrategy{
 	String[] sql = new String[4];
@@ -24,10 +25,11 @@ public class Dinner implements TimeStrategy{
 				con.run();
 				sql = new String[]{"SELECT * FROM main where dinner = 1", "SELECT * FROM dessert where dinner = 1", "SELECT * FROM soup where dinner = 1", "SELECT * FROM drinks where dinner = 1"};
 				data = con.getData(sql);
-
 				Log.v("DB","=======晚餐=======" + data);
-
-
+				while (data == null)
+				{
+					Log.v("DB","Waiting for data");
+				}
 			}
 		}).start();
 		/*
