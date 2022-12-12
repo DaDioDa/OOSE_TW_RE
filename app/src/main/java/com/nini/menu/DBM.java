@@ -1,6 +1,7 @@
 package com.nini.menu;
 
-import static Core.Decorator.OrderType.Dessert;
+import static Core.Decorator.OrderType.*;
+
 
 import android.util.Log;
 
@@ -27,6 +28,10 @@ public class DBM {
     String db_user = "root0829";
     String db_password = "123456789";
 
+    String data = "";
+    String sql;
+    Menu m_Folder;
+
     public static DBM getInstance()
     {
         if (instance == null)
@@ -48,25 +53,86 @@ public class DBM {
         }
 
         // 連接資料庫
-        try {
-            Connection con = DriverManager.getConnection(url, db_user, db_password);
-            Log.v("DB", "遠端連接成功");
-        } catch (SQLException e) {
-            Log.e("DB", "遠端連接失敗");
-            Log.e("DB", e.toString());
-        }
+
     }
 
-    public String getData(String s) {
-        String data = "";
+    public Menu getData(String[] s)
+    {
+
+        Menu rootMenu = new Folder("目錄");
+        for(int i=0;i<s.length;i++)
+        {
+            switch (i)
+            {
+                case 0:
+                {
+                    m_Folder = new Folder("主餐");
+                    sql = s[i];
+                    queryData(MainDish);
+                    break;
+                }
+                case 1:
+                {
+                    m_Folder = new Folder("甜點");
+                    sql = s[i];
+                    queryData(Dessert);
+                    break;
+                }
+                case 2:
+                {
+                    m_Folder = new Folder("湯品");
+                    sql = s[i];
+                    queryData(Dessert);
+                    break;
+                }
+                case 3:
+                {
+                    m_Folder = new Folder("飲料");
+                    sql = s[i];
+                    queryData(Drink);
+                    break;
+                }
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + i);
+
+            }
+            rootMenu.add(m_Folder);
+
+        }
+        // ===================DB測試===================
+        String Mname;
+        for(int i=0;i<rootMenu.getChildren().size();i++)
+        {
+            Mname = rootMenu.getChildren().get(i).getName();
+            System.out.println("=====" + Mname + "=====");
+
+
+            for(int j=0;j<rootMenu.getChildren().get(i).getChildren().size();j++)
+            {
+                System.out.println(Mname +" " + rootMenu.getChildren().get(i).getChildren().get(j).getName() + " " + rootMenu.getChildren().get(i).getChildren().get(j).getPrice());
+
+            }
+            System.out.println("=====" + Mname + "=====");
+
+        }
+        // ===================DB測試===================
+        return rootMenu;
+
+
+    }
+    public Menu queryData(OrderType orderType)
+    {
         try {
             Connection con = DriverManager.getConnection(url, db_user, db_password);
-            String sql = s, Name;
+
+            OrderType ot = orderType;
+
+            String Name;
             float price;
-            OrderType ot = Dessert;
+
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            Menu m_Folder = new Folder("甜點");
             Menu Item;
             int i = 0;
 
@@ -79,14 +145,11 @@ public class DBM {
                 Item = m_Folder.getChildren().get(i);
                 // 建composite end
                 i++;
-
-                data += "\n" + m_Folder.getName() + Item.getName() + ", " + Item.getPrice() + "\n";
             }
             st.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return data;
+        return m_Folder;
     }
-
 }
