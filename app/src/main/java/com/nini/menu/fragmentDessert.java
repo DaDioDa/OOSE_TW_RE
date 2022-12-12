@@ -20,6 +20,8 @@ public class fragmentDessert extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_dessert, container, false);
 
+
+
         for (int i = 0; i < 12; i++) {
             int id = getResources().getIdentifier("dess_"+ i, "id","com.nini.menu");
             BtnArr[i] = rootView.findViewById(id);

@@ -9,35 +9,23 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.text.ParseException;
 
+import Core.Singleton.Controller;
 import Core.Strategy.Timer;
 
 public class Menu extends AppCompatActivity {
     TabLayout tabs;
     ViewPager pager;
     ViewPagerAdapter pagerAdapter;
+    Controller ctrl;
 
-    public static final DBM con = new DBM();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.menu);
-//==================CtrlStart=====================
-        final Timer t = new Timer();
-        new Thread(new Runnable(){
-            public void run()
-            {
-                try
-                {
-                    t.check();
-                }
-                catch (ParseException e)
-                {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
+//==================CtrlStart===================
+        ctrl = Controller.getInstance();
+        ctrl.getMenuFromDB();
 //==================CtrlEnd=====================
 
         tabs = findViewById(R.id.meal);

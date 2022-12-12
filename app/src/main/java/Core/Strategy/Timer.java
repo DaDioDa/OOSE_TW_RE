@@ -31,7 +31,6 @@ public class Timer {
         Date dinnerStartTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date+" 15:00:00");
         Date dinnerEndTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(date+" 22:00:00");
 
-
         CurTime ad = new CurTime();
         System.out.println("現在時間>"+nowTimeStr);
 
@@ -41,13 +40,11 @@ public class Timer {
             if(isEffectiveDate(nowTime,lunchStartTime,lunchEndTime)) {
                 ad.choiceStrategy(new Lunch());
                 ad.choice();
-
             }
             //晚餐
             if(isEffectiveDate(nowTime,dinnerStartTime,dinnerEndTime)) {
                 ad.choiceStrategy(new Dinner());
                 ad.choice();
-
             }
         }
         else {
@@ -55,7 +52,6 @@ public class Timer {
             ad.choiceStrategy(new OutOfBusiness());
             ad.choice();
         }
-
     }
 
 

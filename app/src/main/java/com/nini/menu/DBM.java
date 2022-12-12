@@ -17,6 +17,8 @@ import Core.Decorator.OrderType;
 
 public class DBM {
 
+    private static DBM instance = new DBM();
+
     // 資料庫定義
     String mysql_ip = "85.10.205.173";
     int mysql_port = 3306; // Port 預設為 3306
@@ -24,6 +26,17 @@ public class DBM {
     String url = "jdbc:mysql://" + mysql_ip + ":" + mysql_port + "/" + db_name + "?useUnicode=true&characterEncoding=UTF-8&useSSL=false";
     String db_user = "root0829";
     String db_password = "123456789";
+
+    public static DBM getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new DBM();
+        }
+        return instance;
+    }
+
+    private DBM(){}
 
     public void run() {
         try {
