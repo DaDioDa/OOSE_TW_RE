@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
@@ -19,6 +20,8 @@ public class Menu extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter pagerAdapter;
     Controller ctrl;
+    CheckBox chk;
+    boolean isSet = false;
 
     Button submit;
     
@@ -34,6 +37,7 @@ public class Menu extends AppCompatActivity {
 
         tabs = findViewById(R.id.meal);
         pager = findViewById(R.id.pager);
+        chk = findViewById(R.id.checkBox);
 
         pagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -60,7 +64,16 @@ public class Menu extends AppCompatActivity {
                 ctrl.PlaceOrder();
             }
         });
+
+        chk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctrl.isSet = chk.isChecked();
+            }
+        });
     }
+
+
 
     public void setupViewPager(ViewPager viewPager) {
         pagerAdapter.addFragment(new fragmentMain(), "MAIN");

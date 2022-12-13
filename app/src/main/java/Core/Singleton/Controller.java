@@ -1,5 +1,6 @@
 package Core.Singleton;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -27,8 +28,12 @@ public final class Controller {
     Core.Composite.Menu menu;
     public boolean DB_OK = false;
     Order product;
-    int i_main, i_soup, i_drink, i_dessert;
+    int i_main = 999, i_soup = 999, i_drink = 999, i_dessert = 999;
     TableClass[] table = new TableClass[9];
+    public boolean isSet = false;
+
+    int index = 999;
+    OrderType orderType;
 
     private Controller(){}
     public static Controller getInstance()
@@ -37,49 +42,99 @@ public final class Controller {
     }
     public void MenuBtnClick(Fragment fragment,int i)
     {
-        if(fragment instanceof fragmentMain)
+        if(isSet)
         {
-            i_main = i;
+            if(fragment instanceof fragmentMain)
+            {
+                i_main = i;
+            }
+            else if(fragment instanceof fragmentSoup)
+            {
+                i_soup = i;
+            }
+            else if(fragment instanceof fragmentDrinks)
+            {
+                i_drink = i;
+            }
+            else if(fragment instanceof fragmentDessert)
+            {
+                i_dessert = i;
+            }
         }
-        else if(fragment instanceof fragmentSoup)
+        else
         {
-            i_soup = i;
-        }
-        else if(fragment instanceof fragmentDrinks)
-        {
-            i_drink = i;
-        }
-        else if(fragment instanceof fragmentDessert)
-        {
-            i_dessert = i;
+            if(fragment instanceof fragmentMain)
+            {
+                index = i;
+                orderType = OrderType.MainDish;
+            }
+            else if(fragment instanceof fragmentSoup)
+            {
+                index = i;
+                orderType = OrderType.Soup;
+            }
+            else if(fragment instanceof fragmentDrinks)
+            {
+                index = i;
+                orderType = OrderType.Drink;
+            }
+            else if(fragment instanceof fragmentDessert)
+            {
+                index = i;
+                orderType = OrderType.Dessert;
+            }
         }
     }
 
     public void PlaceOrder()
     {
-        MMBuilder tomatonoodle = new TomatoNoodleBuilder();
-        Director director = new Director(tomatonoodle);
-        director.makeProduct();
-        product = director.getProduct();
-        product = new AddOrder(product, menu.getChildren().get(0).getChildren().get(i_main).getName(),
-                                        menu.getChildren().get(0).getChildren().get(i_main).getPrice(),
-                                        OrderType.MainDish);
+        if(i_main == 999 || i_soup == 999 || i_drink == 999 || i_dessert == 999)
+        {
+            Log.w("Controller","index error");
+            return;
+        }
+        if(!isSet)
+        {
+            product = new AddOrder(product, menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getName(),
+                                            menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getPrice(),
+                                            orderType);
+        }
+        else
+        {
+            MMBuilder tomatonoodle = new TomatoNoodleBuilder();
+            Director director = new Director(tomatonoodle);
+            director.makeProduct();
+            product = director.getProduct();
+            product = new AddOrder(product, menu.getChildren().get(0).getChildren().get(i_main).getName(),
+                    menu.getChildren().get(0).getChildren().get(i_main).getPrice(),
+                    OrderType.MainDish);
 
-        product = new AddOrder(product, menu.getChildren().get(1).getChildren().get(i_soup).getName(),
-                                        menu.getChildren().get(1).getChildren().get(i_soup).getPrice(),
-                                        OrderType.Soup);
+            product = new AddOrder(product, menu.getChildren().get(1).getChildren().get(i_soup).getName(),
+                    menu.getChildren().get(1).getChildren().get(i_soup).getPrice(),
+                    OrderType.Soup);
 
-        product = new AddOrder(product, menu.getChildren().get(2).getChildren().get(i_dessert).getName(),
-                                        menu.getChildren().get(2).getChildren().get(i_dessert).getPrice(),
-                                        OrderType.Dessert);
+            product = new AddOrder(product, menu.getChildren().get(2).getChildren().get(i_dessert).getName(),
+                    menu.getChildren().get(2).getChildren().get(i_dessert).getPrice(),
+                    OrderType.Dessert);
 
-        product = new AddOrder(product, menu.getChildren().get(3).getChildren().get(i_drink).getName(),
-                                        menu.getChildren().get(3).getChildren().get(i_drink).getPrice(),
-                                        OrderType.Drink);
-
+            product = new AddOrder(product, menu.getChildren().get(3).getChildren().get(i_drink).getName(),
+                    menu.getChildren().get(3).getChildren().get(i_drink).getPrice(),
+                    OrderType.Drink);
+        }
         System.out.println(product.getName());
         System.out.print(product.getCost() + "$\n");
+        ResetIndex();
     }
+
+    public void ResetIndex()
+    {
+        index = 999;
+        i_main = 999;
+        i_soup = 999;
+        i_dessert = 999;
+        i_drink = 999;
+    }
+
 
     public void getMenuFromDB() {
         final Timer t = new Timer();
