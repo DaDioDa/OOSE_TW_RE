@@ -21,8 +21,9 @@ public class Lunch implements TimeStrategy{
 			@Override
 			public void run() {
 				con.run();
-				sql = new String[]{"SELECT * FROM main where lunch = 1", "SELECT * FROM dessert where lunch = 1", "SELECT * FROM soup where lunch = 1", "SELECT * FROM drinks where lunch = 1"};
+				sql = new String[]{"SELECT * FROM main where lunch = 1", "SELECT * FROM soup where lunch = 1", "SELECT * FROM dessert where lunch = 1", "SELECT * FROM drinks where lunch = 1"};
 				data = con.getData(sql);
+				Controller.getInstance().setMenu(data);
 				Log.v("DB","=======午餐=======" + data);
 			}
 		}).start();

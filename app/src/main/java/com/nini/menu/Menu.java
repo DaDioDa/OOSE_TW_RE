@@ -3,6 +3,8 @@ package com.nini.menu;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
@@ -17,6 +19,8 @@ public class Menu extends AppCompatActivity {
     ViewPager pager;
     ViewPagerAdapter pagerAdapter;
     Controller ctrl;
+
+    Button submit;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,14 @@ public class Menu extends AppCompatActivity {
 
         setupViewPager(pager);
         tabs.setupWithViewPager(pager);
+
+        submit = findViewById(R.id.summit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctrl.PlaceOrder();
+            }
+        });
     }
 
     public void setupViewPager(ViewPager viewPager) {

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 
 import Core.Composite.Menu;
+import Core.Decorator.OrderType;
 import Core.Singleton.Controller;
 
 
@@ -26,8 +27,13 @@ public class fragmentDessert extends Fragment implements View.OnClickListener{
         for (int i = 0; i < 12; i++) {
             int id = getResources().getIdentifier("dess_"+ i, "id","com.nini.menu");
             BtnArr[i] = rootView.findViewById(id);
-            BtnArr[i].setText("This is dessert_Button NO." + (i+1));
+            BtnArr[i].setText("N/A");
             BtnArr[i].setOnClickListener(this);
+        }
+        ArrayList<Menu> menu = ctrl.getMenu(OrderType.Dessert).getChildren();
+        for (int i = 0; i < menu.size(); i++) {
+            String text = menu.get(i).getName() + "\n" + menu.get(i).getPrice();
+            BtnArr[i].setText(text);
         }
         return rootView;
     }

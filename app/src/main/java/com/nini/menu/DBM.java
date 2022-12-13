@@ -74,14 +74,14 @@ public class DBM {
                 }
                 case 1:
                 {
-                    m_Folder = new Folder("甜點");
+                    m_Folder = new Folder("湯品");
                     sql = s[i];
-                    queryData(Dessert);
+                    queryData(Soup);
                     break;
                 }
                 case 2:
                 {
-                    m_Folder = new Folder("湯品");
+                    m_Folder = new Folder("甜點");
                     sql = s[i];
                     queryData(Dessert);
                     break;
