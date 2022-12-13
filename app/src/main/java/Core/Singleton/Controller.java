@@ -1,5 +1,7 @@
 package Core.Singleton;
 
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 
 import com.nini.menu.Table;
@@ -95,7 +97,11 @@ public final class Controller {
     {
         menu = m;
     }
+    public void GetTable(int i)
+    {
+        System.out.println("tableNum:"+i);
 
+    }
     public Menu getMenu(OrderType type) {
         switch (type) {
             case MainDish:

@@ -29,9 +29,8 @@ public class Loading extends AppCompatActivity {
             }
         }).start();
     }
-
     void switchActivity(){
-        Intent intent = new Intent(this, Menu.class);
+        Intent intent = new Intent(this, Table.class);
         startActivity(intent);
     }
 }
