@@ -16,7 +16,7 @@
         android:theme="@style/Theme.Menu">
         <activity
             android:name=".Menu"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".CheckoutpageActivity"
             android:exported="true" />

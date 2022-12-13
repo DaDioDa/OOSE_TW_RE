@@ -44,40 +44,40 @@ public class fragmentDessert extends Fragment implements View.OnClickListener{
         switch (v.getId())
         {
             case R.id.dess_0:
-                ctrl.DessertBtnClick(0);
+                ctrl.MenuBtnClick(this,0);
                 break;
             case R.id.dess_1:
-                ctrl.DessertBtnClick(1);
+                ctrl.MenuBtnClick(this,1);
                 break;
             case R.id.dess_2:
-                ctrl.DessertBtnClick(2);
+                ctrl.MenuBtnClick(this,2);
                 break;
             case R.id.dess_3:
-                ctrl.DessertBtnClick(3);
+                ctrl.MenuBtnClick(this,3);
                 break;
             case R.id.dess_4:
-                ctrl.DessertBtnClick(4);
+                ctrl.MenuBtnClick(this,4);
                 break;
             case R.id.dess_5:
-                ctrl.DessertBtnClick(5);
+                ctrl.MenuBtnClick(this,5);
                 break;
             case R.id.dess_6:
-                ctrl.DessertBtnClick(6);
+                ctrl.MenuBtnClick(this,6);
                 break;
             case R.id.dess_7:
-                ctrl.DessertBtnClick(7);
+                ctrl.MenuBtnClick(this,7);
                 break;
             case R.id.dess_8:
-                ctrl.DessertBtnClick(8);
+                ctrl.MenuBtnClick(this,8);
                 break;
             case R.id.dess_9:
-                ctrl.DessertBtnClick(9);
+                ctrl.MenuBtnClick(this,9);
                 break;
             case R.id.dess_10:
-                ctrl.DessertBtnClick(10);
+                ctrl.MenuBtnClick(this,10);
                 break;
             case R.id.dess_11:
-                ctrl.DessertBtnClick(11);
+                ctrl.MenuBtnClick(this,11);
                 break;
         }
     }

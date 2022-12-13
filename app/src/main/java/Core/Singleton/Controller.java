@@ -1,5 +1,8 @@
 package Core.Singleton;
 
+import androidx.fragment.app.Fragment;
+
+import com.nini.menu.Table;
 import com.nini.menu.fragmentDessert;
 import com.nini.menu.fragmentDrinks;
 import com.nini.menu.fragmentMain;
@@ -16,38 +19,38 @@ import Core.Decorator.Order;
 import Core.Decorator.OrderType;
 import Core.Strategy.Timer;
 
-public class Controller {
+public final class Controller {
 
-    private static Controller instance = new Controller();
+    private final static Controller instance = new Controller();
     Core.Composite.Menu menu;
     public boolean DB_OK = false;
     Order product;
     int i_main, i_soup, i_drink, i_dessert;
+    TableClass[] table = new TableClass[9];
 
     private Controller(){}
     public static Controller getInstance()
     {
         return instance;
     }
-    public void Say()
+    public void MenuBtnClick(Fragment fragment,int i)
     {
-        System.out.println("This is my controller!");
-    }
-    public void MainBtnClick(int i) {
-        System.out.println("Main Button " + i);
-        i_main = i;
-    }
-    public void DessertBtnClick(int i) {
-        System.out.println("Dessert Button " + i);
-        i_dessert = i;
-    }
-    public void DrinkBtnClick(int i) {
-        System.out.println("Drink Button " + i);
-        i_drink = i;
-    }
-    public void SoupBtnClick(int i) {
-        System.out.println("Soup Button " + i);
-        i_soup = i;
+        if(fragment instanceof fragmentMain)
+        {
+            i_main = i;
+        }
+        else if(fragment instanceof fragmentSoup)
+        {
+            i_soup = i;
+        }
+        else if(fragment instanceof fragmentDrinks)
+        {
+            i_drink = i;
+        }
+        else if(fragment instanceof fragmentDessert)
+        {
+            i_dessert = i;
+        }
     }
 
     public void PlaceOrder()
@@ -80,7 +83,6 @@ public class Controller {
         final Timer t = new Timer();
         try
         {
-            //change 這邊改成 retrun menu
             t.check();
         }
         catch (ParseException e)
@@ -97,13 +99,13 @@ public class Controller {
     public Menu getMenu(OrderType type) {
         switch (type) {
             case MainDish:
-                return menu.getChildren().get(0);
+                return menu.getChildren().get(type.ordinal());
             case Soup:
-                return menu.getChildren().get(1);
+                return menu.getChildren().get(type.ordinal());
             case Dessert:
-                return menu.getChildren().get(2);
+                return menu.getChildren().get(type.ordinal());
             case Drink:
-                return menu.getChildren().get(3);
+                return menu.getChildren().get(type.ordinal());
             default:
                 return null;
         }

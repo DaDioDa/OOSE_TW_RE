@@ -38,16 +38,16 @@ public class fragmentSoup extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.soup_0:
-                ctrl.SoupBtnClick(0);
+                ctrl.MenuBtnClick(this,0);
                 break;
             case R.id.soup_1:
-                ctrl.SoupBtnClick(1);
+                ctrl.MenuBtnClick(this,1);
                 break;
             case R.id.soup_2:
-                ctrl.SoupBtnClick(2);
+                ctrl.MenuBtnClick(this,2);
                 break;
             case R.id.soup_3:
-                ctrl.SoupBtnClick(3);
+                ctrl.MenuBtnClick(this,3);
                 break;
         }
     }

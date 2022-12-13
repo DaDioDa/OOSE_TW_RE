@@ -40,37 +40,37 @@ public class fragmentDrinks extends Fragment implements View.OnClickListener{
         switch (v.getId())
         {
             case R.id.drinks_0:
-                ctrl.DrinkBtnClick(0);
+                ctrl.MenuBtnClick(this,0);
                 break;
             case R.id.drinks_1:
-                ctrl.DrinkBtnClick(1);
+                ctrl.MenuBtnClick(this,1);
                 break;
             case R.id.drinks_2:
-                ctrl.DrinkBtnClick(2);
+                ctrl.MenuBtnClick(this,2);
                 break;
             case R.id.drinks_3:
-                ctrl.DrinkBtnClick(3);
+                ctrl.MenuBtnClick(this,3);
                 break;
             case R.id.drinks_4:
-                ctrl.DrinkBtnClick(4);
+                ctrl.MenuBtnClick(this,4);
                 break;
             case R.id.drinks_5:
-                ctrl.DrinkBtnClick(5);
+                ctrl.MenuBtnClick(this,5);
                 break;
             case R.id.drinks_6:
-                ctrl.DrinkBtnClick(6);
+                ctrl.MenuBtnClick(this,6);
                 break;
             case R.id.drinks_7:
-                ctrl.DrinkBtnClick(7);
+                ctrl.MenuBtnClick(this,7);
                 break;
             case R.id.drinks_8:
-                ctrl.DrinkBtnClick(8);
+                ctrl.MenuBtnClick(this,8);
                 break;
             case R.id.drinks_9:
-                ctrl.DrinkBtnClick(9);
+                ctrl.MenuBtnClick(this,9);
                 break;
             case R.id.drinks_10:
-                ctrl.DrinkBtnClick(10);
+                ctrl.MenuBtnClick(this,10);
                 break;
         }
     }
