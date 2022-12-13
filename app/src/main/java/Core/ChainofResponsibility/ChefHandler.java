@@ -13,10 +13,13 @@ public class ChefHandler extends BaseHandler {
         product.CallChain(this);
     }
 
-
     @Override
     public void CheckType(OrderType type, String name) {
         if(type == OrderType.MainDish)
+        {
+            System.out.println("Chef should make "+ name);
+        }
+        else if(type == OrderType.Soup)
         {
             System.out.println("Chef should make "+ name);
         }

@@ -14,8 +14,6 @@ import Core.Singleton.Controller;
 public class Dinner implements TimeStrategy{
 	String[] sql = new String[4];
 	Menu data;
-	DBM con = DBM.getInstance();
-
 	@Override
 	public void execute()
 	{

@@ -24,6 +24,7 @@ public class Menu extends AppCompatActivity {
     boolean isSet = false;
 
     Button submit;
+    Button checkout;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class Menu extends AppCompatActivity {
         tabs = findViewById(R.id.meal);
         pager = findViewById(R.id.pager);
         chk = findViewById(R.id.checkBox);
+        checkout = findViewById(R.id.checkout);
 
         pagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -65,12 +67,21 @@ public class Menu extends AppCompatActivity {
             }
         });
 
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ctrl.CheckOut();
+            }
+        });
+
         chk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ctrl.isSet = chk.isChecked();
             }
         });
+
+
     }
 
 

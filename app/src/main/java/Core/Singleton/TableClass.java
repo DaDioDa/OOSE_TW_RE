@@ -3,9 +3,10 @@ package Core.Singleton;
 import java.util.ArrayList;
 
 import Core.Builder.Product;
+import Core.Decorator.Order;
 
 public class TableClass {
-    ArrayList<Product> order = new ArrayList<Product>();
+    ArrayList<Order> order = new ArrayList<Order>();
 
     public float getTotalPrice()
     {
@@ -15,5 +16,9 @@ public class TableClass {
             total += order.get(i).getCost();
         }
         return total;
+    }
+
+    public void AddOrder(Order product) {
+        order.add(product);
     }
 }

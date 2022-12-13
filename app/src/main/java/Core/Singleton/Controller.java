@@ -1,11 +1,9 @@
 package Core.Singleton;
 
 import android.util.Log;
-import android.view.View;
 
 import androidx.fragment.app.Fragment;
 
-import com.nini.menu.Table;
 import com.nini.menu.fragmentDessert;
 import com.nini.menu.fragmentDrinks;
 import com.nini.menu.fragmentMain;
@@ -16,6 +14,10 @@ import java.text.ParseException;
 import Core.Builder.Director;
 import Core.Builder.MMBuilder;
 import Core.Builder.TomatoNoodleBuilder;
+import Core.ChainofResponsibility.ChefHandler;
+import Core.ChainofResponsibility.DessertHandler;
+import Core.ChainofResponsibility.DrinkHandler;
+import Core.ChainofResponsibility.Handler;
 import Core.Composite.Menu;
 import Core.Decorator.AddOrder;
 import Core.Decorator.Order;
@@ -29,7 +31,8 @@ public final class Controller {
     public boolean DB_OK = false;
     Order product;
     int i_main = 999, i_soup = 999, i_drink = 999, i_dessert = 999;
-    TableClass[] table = new TableClass[9];
+    TableClass[] table = {new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass()};
+    int tmpTable = 0;
     public boolean isSet = false;
 
     int index = 999;
@@ -88,19 +91,24 @@ public final class Controller {
 
     public void PlaceOrder()
     {
-        if(i_main == 999 || i_soup == 999 || i_drink == 999 || i_dessert == 999)
-        {
-            Log.w("Controller","index error");
-            return;
-        }
         if(!isSet)
         {
+            if(index == 999)
+            {
+                Log.w("Controller","index error");
+                return;
+            }
             product = new AddOrder(product, menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getName(),
                                             menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getPrice(),
                                             orderType);
         }
         else
         {
+            if(i_main == 999 || i_soup == 999 || i_drink == 999 || i_dessert == 999)
+            {
+                Log.w("Controller","index error");
+                return;
+            }
             MMBuilder tomatonoodle = new TomatoNoodleBuilder();
             Director director = new Director(tomatonoodle);
             director.makeProduct();
@@ -123,8 +131,23 @@ public final class Controller {
         }
         System.out.println(product.getName());
         System.out.print(product.getCost() + "$\n");
+        table[tmpTable].AddOrder(product);
+        SendCOR(product);
+        product = null;
         ResetIndex();
     }
+
+    public void SendCOR(Order product)
+    {
+        Handler handler = new ChefHandler(
+                new DessertHandler(
+                        new DrinkHandler(null)
+                )
+        );
+
+        handler.execute(product);
+    }
+
 
     public void ResetIndex()
     {
@@ -134,7 +157,6 @@ public final class Controller {
         i_dessert = 999;
         i_drink = 999;
     }
-
 
     public void getMenuFromDB() {
         final Timer t = new Timer();
@@ -148,14 +170,18 @@ public final class Controller {
         }
     }
 
+    public void CheckOut()
+    {
+        System.out.println(table[tmpTable].getTotalPrice());
+    }
+
     public void setMenu(Core.Composite.Menu m)
     {
         menu = m;
     }
     public void GetTable(int i)
     {
-        System.out.println("tableNum:"+i);
-
+        tmpTable = i;
     }
     public Menu getMenu(OrderType type) {
         switch (type) {

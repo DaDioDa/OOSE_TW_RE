@@ -13,7 +13,6 @@ public class Lunch implements TimeStrategy{
 
 	String[] sql;
 	Menu data;
-	DBM con = DBM.getInstance();
 	@Override
 	public void execute()
 	{

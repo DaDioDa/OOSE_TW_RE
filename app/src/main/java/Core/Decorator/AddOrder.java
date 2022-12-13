@@ -17,16 +17,20 @@ public class AddOrder extends BaseOrder {
     }
 
     public float getCost() {
-        return price + this.order.getCost();
+        if(order != null) return price + this.order.getCost();
+        else return price;
+
     }
 
     public String getName() {
-        return this.order.getName() + "\n佐" + name;
+        if(order != null) return this.order.getName() + "\n佐" + name;
+        else return name;
     }
 
     @Override
     public void CallChain(Handler handler) {
         handler.CheckType(this.type, name);
+        if (order == null) return;
         this.order.CallChain(handler);
     }
 }

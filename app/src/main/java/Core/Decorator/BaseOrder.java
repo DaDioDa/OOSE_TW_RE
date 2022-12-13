@@ -22,7 +22,8 @@ public class BaseOrder implements Order{
 
     @Override
     public void CallChain(Handler handler) {
-
+        if (order == null) return;
+        handler.CheckType(this.type, name);
     }
 
 
