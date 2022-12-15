@@ -78,7 +78,7 @@ public class Menu extends AppCompatActivity {
                 toast.show();
 
                 //如果未出單是空的，顯示如下的toast
-                /*Toast toast = Toast.makeText(Menu.this, "請先選擇餐點後再出單", Toast.LENGTH_LONG);
+                /* Toast = Toast.makeText(Menu.this, "請先選擇餐點後再出單", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER,0,0);
                 toast.show();*/
             }
