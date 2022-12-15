@@ -19,4 +19,6 @@ ViewPagerAdapter viewPagerAdapter;
         viewPagerAdapter.addFragment(new fragmentAlready(),"");
         viewPager.setAdapter(viewPagerAdapter);
     }
+
+
 }

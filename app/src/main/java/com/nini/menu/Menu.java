@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
@@ -71,6 +72,8 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ctrl.PlaceOrder();
+
+
 
                 //Toast
                 Toast toast = Toast.makeText(Menu.this, "您所選的餐點已出單", Toast.LENGTH_LONG);
