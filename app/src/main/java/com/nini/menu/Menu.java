@@ -118,7 +118,7 @@ public class Menu extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter2);
     }
     public void setupNotyetPager(ViewPager viewPager){
-        pagerAdapter3.addFragment(new fragmentAlready(),"");
+        pagerAdapter3.addFragment(new fragmentNotyet(),"");
         viewPager.setAdapter(pagerAdapter3);
     }
 
