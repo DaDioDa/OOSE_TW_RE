@@ -145,7 +145,7 @@
                         android:layout_marginLeft="140dp"
                         app:layout_constraintBottom_toBottomOf="@id/dd"
                         app:layout_constraintLeft_toRightOf="@id/summit"
-                />
+                />\
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <CheckBox

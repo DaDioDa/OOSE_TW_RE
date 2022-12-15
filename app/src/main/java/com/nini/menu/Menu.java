@@ -98,6 +98,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ctrl.isSet = chk.isChecked();
+
             }
         });
 
