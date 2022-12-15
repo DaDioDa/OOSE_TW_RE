@@ -18,7 +18,7 @@
             android:name=".Menu"
             android:exported="true" />
         <activity
-            android:name=".CheckoutpageActivity"
+            android:name=".checkoutPageActivity"
             android:exported="true" />
         <activity
             android:name=".Table"
