@@ -3,10 +3,12 @@ package Core.Singleton;
 import android.util.Log;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.nini.menu.fragmentDessert;
 import com.nini.menu.fragmentDrinks;
 import com.nini.menu.fragmentMain;
+import com.nini.menu.fragmentNotyet;
 import com.nini.menu.fragmentSoup;
 
 import java.text.ParseException;
@@ -34,6 +36,8 @@ public final class Controller {
     TableClass[] table = {new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass()};
     int tmpTable = 0;
     public boolean isSet = false;
+    //refactor
+    public fragmentNotyet notyet;
 
     int index = 999;
     OrderType orderType;
@@ -63,6 +67,7 @@ public final class Controller {
             {
                 i_dessert = i;
             }
+            notyet.SetName();
         }
         else
         {
@@ -86,7 +91,23 @@ public final class Controller {
                 index = i;
                 orderType = OrderType.Dessert;
             }
+            notyet.SingleName();
         }
+    }
+
+    public int[] getSetIndex()
+    {
+        int[] index = {i_main, i_soup, i_drink, i_dessert};
+        return index;
+    }
+
+    public int getIndex()
+    {
+        return index;
+    }
+    public OrderType getOrderType()
+    {
+        return orderType;
     }
 
     public void PlaceOrder()
@@ -200,5 +221,10 @@ public final class Controller {
 
     public boolean isGetDataDone() {
         return DB_OK;
+    }
+
+    public String getTableOrder()
+    {
+        return table[tmpTable].getFullOrder();
     }
 }

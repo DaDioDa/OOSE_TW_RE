@@ -23,7 +23,7 @@ public class AddOrder extends BaseOrder {
     }
 
     public String getName() {
-        if(order != null) return this.order.getName() + "\n佐" + name;
+        if(order != null) return this.order.getName() + "\n" + name;
         else return name;
     }
 

@@ -21,4 +21,12 @@ public class TableClass {
     public void AddOrder(Order product) {
         order.add(product);
     }
+
+    public String getFullOrder() {
+        String fullOrder = "";
+        for(int i = 0; i < order.size(); i++) {
+            fullOrder += order.get(i).getName() + "\n" + order.get(i).getCost() + "\n";
+        }
+        return fullOrder;
+    }
 }
