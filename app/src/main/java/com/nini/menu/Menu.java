@@ -1,6 +1,11 @@
 package com.nini.menu;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.Gravity;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +17,8 @@ import android.widget.CheckBox;
 import androidx.fragment.app.DialogFragment;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
+
+import org.w3c.dom.Text;
 
 import java.text.ParseException;
 
@@ -27,16 +34,20 @@ public class Menu extends AppCompatActivity {
     boolean isSet = false;
     Button submit;
     Button checkout;
+    String sauce;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.menu);
+
 //==================CtrlStart===================
         ctrl = Controller.getInstance();
         //ctrl.getMenuFromDB();
 //==================CtrlEnd=====================
+        TextView t = findViewById(R.id.tableNum);
+        t.setText(ctrl.getTableName());
 
         tabs = findViewById(R.id.meal);
         pager = findViewById(R.id.pager);
@@ -48,6 +59,7 @@ public class Menu extends AppCompatActivity {
         pagerAdapter = new ViewPagerAdapter(this.getSupportFragmentManager());
         pagerAdapter2 = new ViewPagerAdapter(this.getSupportFragmentManager());
         pagerAdapter3 = new ViewPagerAdapter(this.getSupportFragmentManager());
+
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -90,7 +102,9 @@ public class Menu extends AppCompatActivity {
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ctrl.CheckOut();
+                switchActivity();
             }
         });
 
@@ -126,6 +140,10 @@ public class Menu extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter3);
     }
 
+    void switchActivity(){
+        Intent intent = new Intent(this, checkoutPageActivity.class);
+        startActivity(intent);
+    }
 }
 
 
