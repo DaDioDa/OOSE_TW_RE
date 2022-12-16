@@ -46,6 +46,7 @@ public final class Controller {
     //refactor
     public fragmentNotyet notyet;
     public fragmentAlready already;
+    public com.nini.menu.Menu menuActivity;
     //refactor
 
     int index = 999;
@@ -137,7 +138,7 @@ public final class Controller {
         {
             if(index == 999)
             {
-                Log.w("Controller","index error");
+                menuActivity.badToast();
                 return;
             }
             if(sauce != null && orderType == OrderType.MainDish)
@@ -152,7 +153,7 @@ public final class Controller {
         {
             if(i_main == 999 || i_soup == 999 || i_drink == 999 || i_dessert == 999)
             {
-                Log.w("Controller","index error");
+                menuActivity.badToast();
                 return;
             }
             buildSause();
@@ -174,6 +175,7 @@ public final class Controller {
         }
         System.out.println(product.getName());
         System.out.print(product.getCost() + "$\n");
+        menuActivity.goodToast();
         table[tmpTable].AddOrder(product);
         SendCOR(product);
         product = null;

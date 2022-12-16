@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
 
 //==================CtrlStart===================
         ctrl = Controller.getInstance();
-        //ctrl.getMenuFromDB();
+        ctrl.menuActivity = this;
 //==================CtrlEnd=====================
         TextView t = findViewById(R.id.tableNum);
         t.setText(ctrl.getTableName());
@@ -84,18 +84,6 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ctrl.PlaceOrder();
-
-
-
-                //Toast
-                Toast toast = Toast.makeText(Menu.this, "您所選的餐點已出單", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER,0,0);
-                toast.show();
-
-                //如果未出單是空的，顯示如下的toast
-                /* Toast = Toast.makeText(Menu.this, "請先選擇餐點後再出單", Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.CENTER,0,0);
-                toast.show();*/
             }
         });
 
@@ -129,7 +117,19 @@ public class Menu extends AppCompatActivity {
 
     }
 
+    public void goodToast()
+    {
+        Toast toast = Toast.makeText(Menu.this, "您所選的餐點已出單", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
+    }
 
+    public void badToast()
+    {
+        Toast toast = Toast.makeText(Menu.this, "請先選擇餐點後再出單", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.show();
+    }
 
     public void setupViewPager(ViewPager viewPager) {
         pagerAdapter.addFragment(new fragmentMain(), "MAIN");
