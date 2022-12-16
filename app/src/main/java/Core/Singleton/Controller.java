@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.nini.menu.fragmentAlready;
 import com.nini.menu.fragmentDessert;
 import com.nini.menu.fragmentDrinks;
 import com.nini.menu.fragmentMain;
@@ -36,8 +37,11 @@ public final class Controller {
     TableClass[] table = {new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass()};
     int tmpTable = 0;
     public boolean isSet = false;
+
     //refactor
     public fragmentNotyet notyet;
+    public fragmentAlready already;
+    //refactor
 
     int index = 999;
     OrderType orderType;
@@ -156,6 +160,8 @@ public final class Controller {
         SendCOR(product);
         product = null;
         ResetIndex();
+        notyet.Clear();
+        already.setText(table[tmpTable].getFullOrder());
     }
 
     public void SendCOR(Order product)
@@ -223,8 +229,8 @@ public final class Controller {
         return DB_OK;
     }
 
-    public String getTableOrder()
+    public void setAlreadyText()
     {
-        return table[tmpTable].getFullOrder();
+        already.setText(table[tmpTable].getFullOrder());
     }
 }

@@ -56,6 +56,7 @@ public class fragmentNotyet extends Fragment {
         txtTag = new TextView(this.getActivity());
         txtTag.setLayoutParams(params);
         txtTag.setText("xxx\nxxx\nxxx\nxxx");
+        txtTag.setTextSize(20);
         txtTag.setId(3);
 
         linearLayout.addView(txtTag);
@@ -113,6 +114,16 @@ public class fragmentNotyet extends Fragment {
                 break;
         }
         txtTag.setText(name);
+    }
+
+    public void Clear(){
+        if(btnTag != null)
+        {
+            linearLayout.removeView(btnTag);
+            linearLayout.removeView(txtTag);
+            btnTag = null;
+            txtTag = null;
+        }
     }
 
 }

@@ -99,6 +99,9 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 ctrl.isSet = chk.isChecked();
 
+                //refactor
+                ctrl.notyet.Clear();
+                //refactor
             }
         });
 

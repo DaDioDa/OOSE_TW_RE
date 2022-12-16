@@ -11,14 +11,25 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import Core.Singleton.Controller;
+
 public class fragmentAlready extends Fragment {
 
+    TextView txt;
+    Controller ctrl = Controller.getInstance();
 
     @SuppressLint("ResourceType")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_already, container, false);
+        txt = rootView.findViewById(R.id.textView);
+        ctrl.already = this;
+        ctrl.setAlreadyText();
 
         return rootView;
+    }
+
+    public void setText(String str){
+        txt.setText(str);
     }
 }
