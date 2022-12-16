@@ -7,7 +7,11 @@ import Core.Decorator.Order;
 
 public class TableClass {
     ArrayList<Order> order = new ArrayList<Order>();
-
+    String TableName;
+    public TableClass(String name)
+    {
+        TableName = name;
+    }
     public float getTotalPrice()
     {
         float total = 0;

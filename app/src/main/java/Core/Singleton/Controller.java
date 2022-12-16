@@ -31,13 +31,27 @@ public final class Controller {
     public boolean DB_OK = false;
     Order product;
     int i_main = 999, i_soup = 999, i_drink = 999, i_dessert = 999;
-    TableClass[] table = {new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass(), new TableClass()};
+    TableClass[] table = {new TableClass("B2"), new TableClass("A1"), new TableClass("A2"), new TableClass("B2"), new TableClass("A3"), new TableClass("A4"), new TableClass("C1"), new TableClass("A5"), new TableClass("A6")};
     int tmpTable = 0;
     public boolean isSet = false;
+
+    String sauce;
 
     int index = 999;
     OrderType orderType;
 
+    public void setSauce(String s)
+    {
+        sauce = s;
+    }
+    public String getTableName()
+    {
+        return table[tmpTable].TableName;
+    }
+    public float getTablePrice()
+    {
+        return table[tmpTable].getTotalPrice();
+    }
     private Controller(){}
     public static Controller getInstance()
     {
