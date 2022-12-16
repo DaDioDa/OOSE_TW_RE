@@ -30,6 +30,12 @@ public class Loading extends AppCompatActivity {
         }).start();
     }
     void switchActivity(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                finish();
+            }
+        }).start();
         Intent intent = new Intent(this, Table.class);
         startActivity(intent);
     }

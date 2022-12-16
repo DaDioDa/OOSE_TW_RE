@@ -13,9 +13,12 @@ import com.nini.menu.fragmentNotyet;
 import com.nini.menu.fragmentSoup;
 
 import java.text.ParseException;
+import java.util.Objects;
 
+import Core.Builder.CreamNoodleBuilder;
 import Core.Builder.Director;
 import Core.Builder.MMBuilder;
+import Core.Builder.PestoNoodleBuilder;
 import Core.Builder.TomatoNoodleBuilder;
 import Core.ChainofResponsibility.ChefHandler;
 import Core.ChainofResponsibility.DessertHandler;
@@ -34,7 +37,7 @@ public final class Controller {
     public boolean DB_OK = false;
     Order product;
     int i_main = 999, i_soup = 999, i_drink = 999, i_dessert = 999;
-    TableClass[] table = {new TableClass("B2"), new TableClass("A1"), new TableClass("A2"), new TableClass("B2"), new TableClass("A3"), new TableClass("A4"), new TableClass("C1"), new TableClass("A5"), new TableClass("A6")};
+    TableClass[] table = {new TableClass("B1"), new TableClass("A1"), new TableClass("A2"), new TableClass("B2"), new TableClass("A3"), new TableClass("A4"), new TableClass("C1"), new TableClass("A5"), new TableClass("A6")};
     int tmpTable = 0;
     public boolean isSet = false;
 
@@ -137,6 +140,10 @@ public final class Controller {
                 Log.w("Controller","index error");
                 return;
             }
+            if(sauce != null && orderType == OrderType.MainDish)
+            {
+                buildSause();
+            }
             product = new AddOrder(product, menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getName(),
                                             menu.getChildren().get(orderType.ordinal()).getChildren().get(index).getPrice(),
                                             orderType);
@@ -148,10 +155,7 @@ public final class Controller {
                 Log.w("Controller","index error");
                 return;
             }
-            MMBuilder tomatonoodle = new TomatoNoodleBuilder();
-            Director director = new Director(tomatonoodle);
-            director.makeProduct();
-            product = director.getProduct();
+            buildSause();
             product = new AddOrder(product, menu.getChildren().get(0).getChildren().get(i_main).getName(),
                     menu.getChildren().get(0).getChildren().get(i_main).getPrice(),
                     OrderType.MainDish);
@@ -176,6 +180,35 @@ public final class Controller {
         ResetIndex();
         notyet.Clear();
         already.setText(table[tmpTable].getFullOrder());
+    }
+
+    private void buildSause() {
+        if(sauce == null)
+        {
+            return;
+        }
+        if(Objects.equals(sauce, "紅醬"))
+        {
+            MMBuilder tomatonoodle = new TomatoNoodleBuilder();
+            Director director = new Director(tomatonoodle);
+            director.makeProduct();
+            product = director.getProduct();
+        }
+        else if(Objects.equals(sauce, "青醬"))
+        {
+            MMBuilder pestoSause = new PestoNoodleBuilder();
+            Director director = new Director(pestoSause);
+            director.makeProduct();
+            product = director.getProduct();
+        }
+        else if(Objects.equals(sauce, "白醬"))
+        {
+            MMBuilder whiteSause = new CreamNoodleBuilder();
+            Director director = new Director(whiteSause);
+            director.makeProduct();
+            product = director.getProduct();
+        }
+        sauce = null;
     }
 
     public void SendCOR(Order product)
@@ -237,6 +270,11 @@ public final class Controller {
             default:
                 return null;
         }
+    }
+
+    public void ClearTable()
+    {
+        table[tmpTable].Clear();
     }
 
     public boolean isGetDataDone() {

@@ -33,4 +33,8 @@ public class TableClass {
         }
         return fullOrder;
     }
+
+    public void Clear() {
+        order.clear();
+    }
 }

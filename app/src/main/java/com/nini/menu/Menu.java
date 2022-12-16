@@ -103,6 +103,13 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                }).start();
+
                 ctrl.CheckOut();
                 switchActivity();
             }
