@@ -1,4 +1,4 @@
-package com.nini.menu;
+package Core.Singleton;
 
 import static Core.Decorator.OrderType.*;
 
@@ -15,7 +15,6 @@ import Core.Composite.Folder;
 import Core.Composite.Item;
 import Core.Composite.Menu;
 import Core.Decorator.OrderType;
-import Core.Singleton.Controller;
 
 public class DBM {
 

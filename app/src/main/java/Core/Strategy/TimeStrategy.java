@@ -1,7 +1,7 @@
 //Strategy interface "TimeStrategy"
 package Core.Strategy;
 
-import com.nini.menu.DBM;
+import Core.Singleton.DBM;
 
 public interface TimeStrategy {
 	DBM con = DBM.getInstance();

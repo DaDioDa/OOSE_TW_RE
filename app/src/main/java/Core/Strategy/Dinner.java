@@ -4,10 +4,6 @@ package Core.Strategy;
 
 import android.util.Log;
 
-import com.nini.menu.DBM;
-
-import java.util.ArrayList;
-
 import Core.Composite.Menu;
 import Core.Singleton.Controller;
 
