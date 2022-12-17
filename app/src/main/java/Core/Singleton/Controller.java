@@ -58,6 +58,8 @@ public final class Controller {
     }
     public String getTableName()
     {
+        if (tmpTable < 0 || tmpTable > 8)
+            return "桌號不存在";
         return table[tmpTable].TableName;
     }
     public float getTablePrice()
@@ -89,7 +91,8 @@ public final class Controller {
             {
                 i_dessert = i;
             }
-            notyet.SetName();
+            if (notyet != null)
+                notyet.SetName();
         }
         else
         {
@@ -113,7 +116,8 @@ public final class Controller {
                 index = i;
                 orderType = OrderType.Dessert;
             }
-            notyet.SingleName();
+            if (notyet != null)
+                notyet.SingleName();
         }
     }
 
