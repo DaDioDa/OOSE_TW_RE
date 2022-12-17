@@ -32,6 +32,10 @@ public class fragmentDrinks extends Fragment implements View.OnClickListener{
             String text = menu.get(i).getName() + "\n" + menu.get(i).getPrice();
             BtnArr[i].setText(text);
         }
+        for (int i = menu.size();i < BtnArr.length;i++)
+        {
+            BtnArr[i].setVisibility(View.GONE);
+        }
         return rootView;
     }
 

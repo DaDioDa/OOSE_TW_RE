@@ -34,7 +34,7 @@ public class fragmentMain extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < BtnArr.length; i++) {
             int id = getResources().getIdentifier("butt_"+ i, "id","com.nini.menu");
             BtnArr[i] = rootView.findViewById(id);
             BtnArr[i].setText("N/A");
@@ -45,6 +45,10 @@ public class fragmentMain extends Fragment implements View.OnClickListener {
         for (int i = 0; i < menu.size(); i++) {
             String text = menu.get(i).getName() + "\n" + menu.get(i).getPrice();
             BtnArr[i].setText(text);
+        }
+        for (int i = menu.size();i < BtnArr.length;i++)
+        {
+            BtnArr[i].setVisibility(View.GONE);
         }
         return rootView;
         }
