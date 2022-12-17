@@ -136,6 +136,7 @@ public final class Controller {
         return orderType;
     }
 
+    //****need to refactor****
     public void PlaceOrder()
     {
         if(!isSet)
