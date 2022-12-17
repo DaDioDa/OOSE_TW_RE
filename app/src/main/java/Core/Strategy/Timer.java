@@ -34,10 +34,10 @@ public class Timer {
         CurTime ad = new CurTime();
         System.out.println("現在時間>"+nowTimeStr);
 
-        ad.choiceStrategy(new Dinner());
-        ad.choice();
+        //ad.choiceStrategy(new Dinner());
+        //ad.choice();
 
-        /*
+
         if(isEffectiveDate(nowTime,lunchStartTime,dinnerEndTime)) {
             System.out.println("開始營業");
             //午餐
@@ -57,7 +57,7 @@ public class Timer {
             ad.choice();
         }
 
-         */
+
     }
 
 
